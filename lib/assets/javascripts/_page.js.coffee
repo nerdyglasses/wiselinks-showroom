@@ -50,23 +50,26 @@ class Page
           return false
     )
 
-  load: (url, target, render = 'template') ->
-    @template_id = new Date().getTime() if render != 'partial' && render != 'panel'
+  load: (url, options = {}) ->
+    defaults =
+      timestamp: (new Date().getTime())
+      target: selector
+      referer: window.location.href
+      render: "template"
 
-    selector = if target?
-      $target = this._wrap(target)
-      this._try_target($target)
+    @template_id = new Date().getTime() if options.render != 'partial' && options.render != 'panel'
+    options.template_id = @template_id
+    
+    $.extend true, options, defaults
+
+    selector = if options.target?
+      $target = this._wrap(options.target)
+      this._try_target($target, options)
       $target.selector
 
-    History.pushState({
-      timestamp: (new Date().getTime()),
-      template_id: @template_id,
-      render: render,
-      target: selector,
-      referer: window.location.href
-    }, document.title, url )
+    History.pushState( options, document.title, url )
 
-  reload: () ->
+  reload: ->
     History.replaceState({
       timestamp: (new Date().getTime()),
       template_id: @template_id,
@@ -75,10 +78,7 @@ class Page
     }, document.title, History.getState().url )
 
   _call: (state) ->
-
     $target = if state.data.target? then $(state.data.target) else @$target
-    console.log "_calling state", state
-    console.log "_calling target", $target
     this.request_manager.call($target, state)
 
   _template_id_changed: (state) ->
@@ -99,12 +99,13 @@ class Page
     state.data.render = 'template'
     state
 
-  _try_target: ($target) ->
-    if $target.length == 0  && @options.target_missing == 'exception'
+  _try_target: ($target, request_options = {}) ->
+    if $target.length == 0 &&
+    @options.target_missing == 'exception' &&
+    request_options.type != 'panel'
       throw new Error("[Wiselinks] Target missing: `#{$target.selector}`")
 
-  _wrap: (object) ->
-    $(object)
+  _wrap: (object) -> $(object)
 
 
 window._Wiselinks = {} if window._Wiselinks == undefined

@@ -6,12 +6,19 @@ class Link
       this._non_standard_click(event))
 
   process: ->
+    options = {}
     switch @$link.data('push')
       when 'partial' then type = 'partial'
       when 'panel' then type = 'panel'
       else type = 'template'
 
-    @page.load(@$link.attr("href"), @$link.data('target'), type)
+    options =
+      type:   type
+      target: @$link.data('target')
+      pid:    @$link.data('pid')
+      pclass: @$link.data('pclass')
+
+    @page.load(@$link.attr("href"), options)
 
   _cross_origin_link: (link) ->
     this._different_protocol(link) ||
