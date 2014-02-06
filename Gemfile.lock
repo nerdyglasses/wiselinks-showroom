@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wiselinks-showroom (1.1.4)
+    wiselinks (1.1.4)
 
 GEM
   remote: https://rubygems.org/
@@ -178,4 +178,4 @@ DEPENDENCIES
   simplecov
   sqlite3
   webmock (~> 1.9.0)
-  wiselinks-showroom!
+  wiselinks!

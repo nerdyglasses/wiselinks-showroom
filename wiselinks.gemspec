@@ -5,12 +5,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'wiselinks/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = 'wiselinks-showroom'
+  gem.name          = 'wiselinks'
   gem.version       = Wiselinks::Version::STRING
-  gem.authors       = ['Igor Alexandrov', 'Alexey Solilin', 'Julia Egorova', 'Alexandr Borisov', 'Christian Gambardella']
+  gem.authors       = ['Igor Alexandrov', 'Alexey Solilin', 'Julia Egorova', 'Alexandr Borisov']
   gem.email         = 'christian.gambardella@gmail.com'
   gem.summary       = 'Wiselinks makes following links and submitting some forms in your web application smarter and faster'
-  gem.homepage      = 'http://github.com/nerdyglasses/wiselinks-showroom'
+  gem.homepage      = 'http://github.com/nerdyglasses/wiselinks'
   gem.licenses      = ['MIT']
 
   gem.files         = `git ls-files | grep -v 'build/*'`.split($/)
