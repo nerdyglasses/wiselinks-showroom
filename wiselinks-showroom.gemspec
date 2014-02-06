@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'wiselinks-showroom'
   gem.version       = Wiselinks::Version::STRING
   gem.authors       = ['Igor Alexandrov', 'Alexey Solilin', 'Julia Egorova', 'Alexandr Borisov', 'Christian Gambardella']
-  gem.email         = 'igor.alexandrov@gmail.com'
+  gem.email         = 'christian.gambardella@gmail.com'
   gem.summary       = 'Wiselinks makes following links and submitting some forms in your web application smarter and faster'
   gem.homepage      = 'http://github.com/nerdyglasses/wiselinks-showroom'
   gem.licenses      = ['MIT']
