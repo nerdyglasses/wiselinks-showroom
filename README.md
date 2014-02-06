@@ -5,6 +5,13 @@
 [![Gem Version](https://badge.fury.io/rb/wiselinks.png)](http://badge.fury.io/rb/wiselinks)
 
 
+#Wiselinks Showroom
+
+For our website we needed to be a little bit more flexible.
+data-push="panel" is new which will create a new html element if there is no yet.
+
+_Under Development_
+
 #Wiselinks
 
 Wiselinks makes following links and submitting forms in your web application faster.
