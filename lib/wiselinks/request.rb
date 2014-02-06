@@ -18,12 +18,17 @@ module Wiselinks
     end
 
     def wiselinks_template?
-      self.wiselinks? && self.headers['X-Wiselinks'] != 'partial'
+      self.wiselinks? && !wiselinks_partial? && !wiselinks_panel?
     end
 
     def wiselinks_partial?
       self.wiselinks? && self.headers['X-Wiselinks'] == 'partial'
     end
+
+    def wiselinks_panel?
+      self.wiselinks? && self.headers['X-Wiselinks'] == 'panel'
+    end
+
   end
 end
 

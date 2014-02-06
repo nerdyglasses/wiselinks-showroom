@@ -22,6 +22,10 @@ describe ActionDispatch::Request do
       it '#wiselinks_partial?' do
         @request.should respond_to(:wiselinks_partial?)
       end
+
+      it '#wiselinks_panel?' do
+        @request.should respond_to(:wiselinks_panel?)
+      end
     end
 
     context 'wiselinks methods' do
@@ -35,6 +39,10 @@ describe ActionDispatch::Request do
 
       it 'should not be a wiselinks partial request' do
         @request.wiselinks_partial?.should == false
+      end
+
+      it 'should not be a wiselinks panel request' do
+        @request.wiselinks_panel?.should == false
       end
     end
   end
@@ -60,6 +68,10 @@ describe ActionDispatch::Request do
       it 'should not be a wiselinks partial request' do
         @request.wiselinks_partial?.should == false
       end
+
+      it 'should not be a wiselinks panel request' do
+        @request.wiselinks_panel?.should == false
+      end
     end
   end
 
@@ -83,6 +95,10 @@ describe ActionDispatch::Request do
 
       it 'should not be a wiselinks partial request' do
         @request.wiselinks_partial?.should == false
+      end
+
+      it 'should not be a wiselinks panel request' do
+        @request.wiselinks_panel?.should == false
       end
     end
   end
@@ -108,6 +124,41 @@ describe ActionDispatch::Request do
       it 'should be a wiselinks partial request' do
         @request.wiselinks_partial?.should == true
       end
+
+      it 'should be a wiselinks panel request' do
+        @request.wiselinks_panel?.should == false
+      end
     end
   end
+
+  describe 'wiselinks_panel_request' do
+    before :all do
+      @request = FactoryGirl.build(:wiselinks_panel_request)
+    end
+
+    it "should be" do
+      @request.should be
+    end
+
+    context 'wiselinks methods' do
+      it 'should be a wiselinks request' do
+        @request.wiselinks?.should == true
+      end
+
+      it 'should not be a wiselinks template request' do
+        @request.wiselinks_template?.should == false
+      end
+
+      it 'should be a wiselinks partial request' do
+        @request.wiselinks_partial?.should == false
+      end
+
+      it 'should be a wiselinks panel request' do
+        @request.wiselinks_panel?.should == true
+      end
+    end
+  end
+
+
+
 end

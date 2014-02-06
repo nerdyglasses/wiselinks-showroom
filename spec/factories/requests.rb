@@ -20,11 +20,20 @@ FactoryGirl.define do
       end
     end
 
+    trait :wiselinks_panel do
+      after(:build) do |obj|
+        obj.env['X-Wiselinks'] = 'panel'
+      end
+    end
+
+
+
 
     initialize_with{ new(Rack::MockRequest.env_for('/')) }
 
     factory :wiselinks_request,   traits: [:wiselinks]
     factory :wiselinks_template_request,   traits: [:wiselinks_template]
     factory :wiselinks_partial_request,   traits: [:wiselinks_partial]
+    factory :wiselinks_panel_request,   traits: [:wiselinks_panel]
   end
 end
