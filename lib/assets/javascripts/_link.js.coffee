@@ -6,10 +6,10 @@ class Link
       this._non_standard_click(event))
 
   process: ->
-    type = if (@$link.data('push') == 'partial')
-      'partial'
-    else
-      'template'
+    switch @$link.data('push')
+      when 'partial' then type = 'partial'
+      when 'panel' then type = 'panel'
+      else type = 'template'
 
     @page.load(@$link.attr("href"), @$link.data('target'), type)
 

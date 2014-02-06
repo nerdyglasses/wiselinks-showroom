@@ -35,6 +35,8 @@ class RequestManager
           if url? && (url != self._normalize(state.url))
             self._redirect_to(url, $target, state, xhr)
 
+
+          # This is the interesting part where to implement PANELS!
           $target.html(data).promise().done(
             ->
               self._title(xhr.getResponseHeader('X-Wiselinks-Title'))

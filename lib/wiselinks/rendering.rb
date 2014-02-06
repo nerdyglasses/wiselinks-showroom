@@ -17,6 +17,9 @@ module Wiselinks
         if self.request.wiselinks_partial?
           Wiselinks.log("Processing partial request")
           options[:partial] ||= action_name
+        elsif self.request.wiselinks_panel?
+          Wiselinks.log("Processing panel request")
+          options[:partial] ||= action_name
         else
           Wiselinks.log("Processing template request")
           if Wiselinks.options[:layout] != false

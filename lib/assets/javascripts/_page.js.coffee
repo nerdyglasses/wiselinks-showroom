@@ -51,7 +51,7 @@ class Page
     )
 
   load: (url, target, render = 'template') ->
-    @template_id = new Date().getTime() if render != 'partial'
+    @template_id = new Date().getTime() if render != 'partial' && render != 'panel'
 
     selector = if target?
       $target = this._wrap(target)
@@ -75,7 +75,10 @@ class Page
     }, document.title, History.getState().url )
 
   _call: (state) ->
+
     $target = if state.data.target? then $(state.data.target) else @$target
+    console.log "_calling state", state
+    console.log "_calling target", $target
     this.request_manager.call($target, state)
 
   _template_id_changed: (state) ->
