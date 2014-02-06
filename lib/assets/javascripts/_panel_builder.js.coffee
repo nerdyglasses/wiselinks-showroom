@@ -4,15 +4,17 @@ class PanelBuilder
   render: ->
     @_try_target()
 
+    console.log "OPTIONS!!! ", @options
+
     $panel = $('<div class="panel" />')
     $panel.addClass @options.pclass if @options.pclass?
-    $panel.data 'pid', @options.pid if @options.pid?
+    $panel.attr 'data-pid', @options.pid 
     $panel.attr 'id', @options.target
     console.log "[PanelBuilder] Panel", $panel
 
     if @_panel_exists()
       console.log "Panel exists"
-      $(@options.target).replaceWith $panel
+      $("##{@options.target}").replaceWith $panel
     else
       console.log "Panel exists NOT"
       $('#main').append $panel
