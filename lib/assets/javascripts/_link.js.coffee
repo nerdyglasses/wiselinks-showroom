@@ -8,12 +8,12 @@ class Link
   process: ->
     options = {}
     switch @$link.data('push')
-      when 'partial' then type = 'partial'
-      when 'panel' then type = 'panel'
-      else type = 'template'
+      when 'partial' then render = 'partial'
+      when 'panel' then render = 'panel'
+      else render = 'template'
 
     options =
-      type:   type
+      render: render
       target: @$link.data('target')
       pid:    @$link.data('pid')
       pclass: @$link.data('pclass')

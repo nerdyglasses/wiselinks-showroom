@@ -26,6 +26,7 @@ module Wiselinks
     end
 
     def wiselinks_panel?
+      Wiselinks.log("wiselinks_panel? #{self.headers['X-Wiselinks']}")
       self.wiselinks? && self.headers['X-Wiselinks'] == 'panel'
     end
 

@@ -50,17 +50,18 @@ class Page
           return false
     )
 
-  load: (url, options = {}) ->
+  load: (url, other_options = {}) ->
     defaults =
       timestamp: (new Date().getTime())
       target: selector
       referer: window.location.href
       render: "template"
 
+    options = {}
+    $.extend true, options, defaults, other_options
+
     @template_id = new Date().getTime() if options.render != 'partial' && options.render != 'panel'
     options.template_id = @template_id
-    
-    $.extend true, options, defaults
 
     selector = if options.target?
       $target = this._wrap(options.target)
@@ -102,7 +103,7 @@ class Page
   _try_target: ($target, request_options = {}) ->
     if $target.length == 0 &&
     @options.target_missing == 'exception' &&
-    request_options.type != 'panel'
+    request_options.render != 'panel'
       throw new Error("[Wiselinks] Target missing: `#{$target.selector}`")
 
   _wrap: (object) -> $(object)

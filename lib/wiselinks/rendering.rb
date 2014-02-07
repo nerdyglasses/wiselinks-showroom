@@ -13,7 +13,7 @@ module Wiselinks
       if self.request.wiselinks?
         self.headers['Cache-Control'] = 'no-cache, no-store, max-age=0, must-revalidate'
         self.headers['Pragma'] = 'no-cache'
-
+        
         if self.request.wiselinks_partial?
           Wiselinks.log("Processing partial request")
           options[:partial] ||= action_name

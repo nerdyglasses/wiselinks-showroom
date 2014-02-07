@@ -39,15 +39,10 @@ class RequestManager
 
 
           # This is the interesting part where to implement PANELS!
-          # console.log $target
-          console.log state
-
           if $target.length <= 0
-            console.log "Panel has to be created"
             panel_builder = new _Wiselinks.PanelBuilder(state.data)
-            panel_builder.render()
+            panel_builder.render(data)
           else
-            # Target or Panel already exists
             $target.html(data).promise().done(
               ->
                 self._title(xhr.getResponseHeader('X-Wiselinks-Title'))
