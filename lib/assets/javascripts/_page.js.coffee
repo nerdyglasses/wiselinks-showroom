@@ -25,7 +25,7 @@ class Page
         state = History.getState()
 
         if state.data.bpi != undefined
-          $('.panel').eq(state.data.bpi).nextAll('.panel').remove()
+          $('.panel').eq(state.data.bpi).nextAll('.panel').removeClass('in')
         else
           if self._template_id_changed(state)
             self._call(self._reset_state(state))

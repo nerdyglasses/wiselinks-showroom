@@ -15,6 +15,10 @@ class PanelBuilder
     else
       $('#main').append @$panel
 
+    setTimeout =>
+      @$panel.addClass('in')
+    , 50
+
   _try_target: ->
     unless @options.target?
       throw new Error('[Wiselinks] data-target needs to be specified.')
