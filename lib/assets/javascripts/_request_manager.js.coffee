@@ -42,12 +42,14 @@ class RequestManager
           if $target.length <= 0
             panel_builder = new _Wiselinks.PanelBuilder(state.data)
             panel_builder.render(data)
+            self._done(panel_builder.$panel, status, state, data)
           else
             $target.html(data).promise().done(
               ->
                 self._title(xhr.getResponseHeader('X-Wiselinks-Title'))
                 self._done($target, status, state, data)
             )
+
 
     ).fail(
       (xhr, status, error) ->
@@ -82,7 +84,7 @@ class RequestManager
 
   _done: ($target, status, state, data) ->
     $(document).trigger('page:done'
-      [$target, status, decodeURI(state.url), data]
+      [$target, status, decodeURI(state.url), data, state]
     )
 
   _fail: ($target, status, state, error, code) ->

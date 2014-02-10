@@ -6,7 +6,7 @@ class PanelBuilder
 
     @$panel = $('<div class="panel" />')
     @$panel.addClass @options.pclass if @options.pclass?
-    @$panel.attr 'data-pid', @options.pid 
+    @$panel.attr 'data-pid', @options.pid
     @$panel.attr 'id', @options.target
     @$panel.html panel_content if panel_content?
 

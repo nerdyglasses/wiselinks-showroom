@@ -24,10 +24,13 @@ class Page
       (event, data) ->
         state = History.getState()
 
-        if self._template_id_changed(state)
-          self._call(self._reset_state(state))
+        if state.data.bpi != undefined
+          $('.panel').eq(state.data.bpi).nextAll('.panel').remove()
         else
-          self._call(state)
+          if self._template_id_changed(state)
+            self._call(self._reset_state(state))
+          else
+            self._call(state)
     )
 
     $(document).on(
@@ -68,6 +71,7 @@ class Page
       this._try_target($target, options)
       $target.selector
 
+    console.log options
     History.pushState( options, document.title, url )
 
   reload: ->
