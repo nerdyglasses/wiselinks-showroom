@@ -8,7 +8,9 @@ class PanelBuilder
     @$panel.addClass @options.pclass if @options.pclass?
     @$panel.attr 'data-pid', @options.pid
     @$panel.attr 'id', @options.target
-    @$panel.html panel_content if panel_content?
+    @$panel.append '<div class="panel-content"></div>'
+    @$panel.append '<div class="panel-overlay"></div>'
+    @$panel.find('.panel-content').html panel_content if panel_content?
 
     if @_panel_exists()
       $("##{@options.target}").replaceWith @$panel

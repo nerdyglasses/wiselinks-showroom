@@ -71,7 +71,6 @@ class Page
       this._try_target($target, options)
       $target.selector
 
-    console.log options
     History.pushState( options, document.title, url )
 
   reload: ->
