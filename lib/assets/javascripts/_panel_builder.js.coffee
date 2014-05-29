@@ -18,8 +18,8 @@ class PanelBuilder
       $('#main').append @$panel
 
     setTimeout =>
-      @$panel.addClass('in')
-    , 50
+      @$panel.addClass('animation-in')
+    , 1
 
   _try_target: ->
     unless @options.target?
