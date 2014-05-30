@@ -8,9 +8,13 @@ class PanelBuilder
     @$panel.addClass @options.pclass if @options.pclass?
     @$panel.attr 'data-pid', @options.pid
     @$panel.attr 'id', @options.target
-    @$panel.append '<div class="panel-content"></div>'
-    @$panel.append '<div class="panel-overlay"></div>'
-    @$panel.find('.panel-content').html panel_content if panel_content?
+
+    @$panel_scroller = $('<div class="panel-scroller" />')
+    @$panel_scroller.html '<div class="panel-content" />'
+    @$panel_scroller.find('.panel-content').html panel_content if panel_content?
+
+    @$panel.html @$panel_scroller
+    @$panel.append $('<div class="panel-overlay" style="display:none" />')
 
     if @_panel_exists()
       $("##{@options.target}").replaceWith @$panel
