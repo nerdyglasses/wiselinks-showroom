@@ -11,7 +11,9 @@ class PanelBuilder
 
     @$panel_scroller = $('<div class="panel-scroller" />')
     @$panel_scroller.html '<div class="panel-content" />'
-    @$panel_scroller.find('.panel-content').html panel_content if panel_content?
+    @$panel_content = @$panel_scroller.find('.panel-content')
+    @$panel_content.html '<div class="panel-content-wrapper" />'
+    @$panel_scroller.find('.panel-content-wrapper').html panel_content if panel_content?
 
     @$panel.html @$panel_scroller
     @$panel.append $('<div class="panel-overlay" style="display:none" />')
@@ -31,8 +33,6 @@ class PanelBuilder
 
   _panel_exists: ->
     $('.panel').filter("##{@options.target}").length >= 1
-
-
 
 window._Wiselinks = {} if window._Wiselinks == undefined
 window._Wiselinks.PanelBuilder = PanelBuilder
