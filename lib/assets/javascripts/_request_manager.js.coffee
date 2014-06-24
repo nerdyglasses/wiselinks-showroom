@@ -46,7 +46,6 @@ class RequestManager
           else
             # change target to .panel-content-wrapper if existing
             # otherwise it makes panels kaputt
-            console.log "TARGET: ", $target
             if $target.filter('.panel').find('.panel-content-wrapper').length == 1
               $target = $target.find('.panel-content-wrapper')
 
