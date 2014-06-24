@@ -7,9 +7,9 @@ class Page
     @template_id = new Date().getTime()
     @request_manager = new _Wiselinks.RequestManager(@options)
 
-    @$target = self._wrap(@$target)
+    @$target = @_wrap(@$target)
 
-    self._try_target(@$target)
+    @_try_target(@$target)
 
     if History.emulated.pushState && @options.html4 == true
       if window.location.href.indexOf('#.') == -1 &&

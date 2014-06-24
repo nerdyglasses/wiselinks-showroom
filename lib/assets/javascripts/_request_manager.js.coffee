@@ -44,12 +44,16 @@ class RequestManager
             panel_builder.render(data)
             self._done(panel_builder.$panel, status, state, data)
           else
+            # change target to .panel-content-wrapper if existing
+            # otherwise it makes panels kaputt
+            if $target.find('.panel-content-wrapper').length == 1
+              $target = $target.find('.panel-content-wrapper')
+
             $target.html(data).promise().done(
               ->
                 self._title(xhr.getResponseHeader('X-Wiselinks-Title'))
                 self._done($target, status, state, data)
             )
-
 
     ).fail(
       (xhr, status, error) ->
