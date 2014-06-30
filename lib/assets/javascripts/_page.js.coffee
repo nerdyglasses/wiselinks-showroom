@@ -62,7 +62,7 @@ class Page
 
     options = {}
     $.extend true, options, defaults, other_options
-
+    
     @template_id = new Date().getTime() if options.render != 'partial' && options.render != 'panel'
     options.template_id = @template_id
 

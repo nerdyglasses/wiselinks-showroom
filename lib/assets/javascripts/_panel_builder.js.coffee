@@ -7,6 +7,7 @@ class PanelBuilder
     @$panel = $('<div class="panel" />')
     @$panel.addClass @options.pclass if @options.pclass?
     @$panel.attr 'data-pid', @options.pid
+    @$panel.attr 'data-referer-id', @options.pid
     @$panel.attr 'id', @options.target
 
     @$panel_scroller = $('<div class="panel-scroller" />')
