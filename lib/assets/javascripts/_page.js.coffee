@@ -36,6 +36,7 @@ class Page
     $(document).on(
       'click', 'a[data-push], a[data-replace]'
       (event) ->
+        return true if $(event.target).is('input')
         if (link = new _Wiselinks.Link(self, $(this))).allows_process(event)
           event.preventDefault()
           link.process()
